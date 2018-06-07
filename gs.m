@@ -6,15 +6,15 @@ m = size(A,1);
 Q = zeros(m,n);
 R = zeros(n,n);
 
-for i=1:n
-    v = A(:,i);
+for j=1:n
+    v = A(:,j);
     %TODO
-    for k = 1:i-1
-        R(k,i) = Q(:,k)'*A(:,i);
-        v = v - R(k,i)*Q(:,k);
+    for i=1:j-1
+        R(i,j) = Q(:,i)'*A(:,j);
+        v = v - R(i,j)*Q(:,i);
     end
-    R(i,i) = norm(v);
-    Q(:,i) = v / R(i,i);
+    R(j,j) = norm(v);
+    Q(:,j) = v/R(j,j);
 end
 
 end

@@ -7,19 +7,13 @@ function [w,x1] = householder(x)
 %
 %
 
+
 % TODO
+opt_angle = angle(x(1,1)) + pi;
+x1 = norm(x)*(cos(opt_angle) + 1i*sin(opt_angle));
+x_prime = [x1 zeros(1,length(x)-1)].';
 
-% Initialize
-w = zeros(size(x));
-
-% First element
-w(1) = -( norm(x) + abs(x(1)) )*exp(1i*angle(x(1)));
-
-% Remaining elements
-w(2:end) = -x(2:end);
-
-% x1
-x1 = -norm(x)*exp(1i*angle(x(1)));
-
-% Normalize
+w = x_prime - x;
+ 
 w = w/norm(w);
+end

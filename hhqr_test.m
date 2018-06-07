@@ -16,6 +16,8 @@ if norm(triu(R) - R) > 2*m*eps
     error('R is not upper triangular')
 end
 
+R = [R; zeros(m-n,n)];
+
 if norm(applyQHe(W,A) - R) > 2*m*eps
     error('Q^He * A is not equal to R')
 end

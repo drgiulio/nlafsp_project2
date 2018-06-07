@@ -5,6 +5,7 @@ R = randn(m,m) + 1i* randn(m,m);
 R = triu(R);
 
 x = randn(m,2) + 1i*randn(m,2);
+%x = [1 1; 1 1; 1 1; 1 1; 1 1];
 
 y = backsub(R,x);
 

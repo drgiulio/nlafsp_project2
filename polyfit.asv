@@ -6,12 +6,12 @@ x = linspace(0.1, 1, m)';
 Vfull = vander(x);
 Vfull = fliplr(Vfull);
 
-n = 24;
+n = 12;
 y = sin(1./x); 
 
 %TODO: calculate V
 
-V = Vfull(:,1:n);
+V = Vfull(:,1:n).^-1;
 
 %TODO: solution with classical GS
 [Q R] = gs(V);
@@ -19,15 +19,10 @@ answer = Q'*y;
 aGS = backsub(R,answer);
 
 %TODO: solution with modified GS
-[Q R] = mgs(V);
-answer = Q'*y;
-aMGS = backsub(R,answer);
+%aMGS = ?
 
 %TODO: solution with Housholder QR
-[W,R] = hhqr(V);
-answer = applyQHe(W,y);
-aHH = backsub(R,answer);
-aHH(n+1:end,:) = [];
+%aHH = ?
 
 figure 
 hold all
