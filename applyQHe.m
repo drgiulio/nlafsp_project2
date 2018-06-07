@@ -10,7 +10,10 @@ n = size(W,2);
 Y = X;
 for i = 1:n
     %TODO
+    %{
     F = eye(m-i+1)-2*W(i:end,i)*W(i:end,i)';%./(norm(W(i:end,i))^2);
     %Y = [eye(i-1),zeros(i-1);zeros(n-i+1,i-1),F]*Y;
     Y = [eye(i-1),zeros(i-1,size(F,2));zeros(size(F,1),i-1),F]*Y;
+    %}
+    Y(i:m,:) = Y(i:m,:) - 2*W(i:end,i)*W(i:end,i)'*Y(i:m,:);
 end
