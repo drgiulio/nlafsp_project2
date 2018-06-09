@@ -7,8 +7,8 @@ function [w,x1] = householder(x)
 %
 %
 
-% TODO
 
+% TODO
 % Initialize
 w = zeros(size(x));
 
@@ -21,5 +21,5 @@ w(2:end) = -x(2:end);
 % x1
 x1 = -norm(x)*exp(1i*angle(x(1)));
 
-% Normalize
+% Normalize   
 w = w/norm(w);

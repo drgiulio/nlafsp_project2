@@ -17,11 +17,4 @@ for i = 1:n
     R(i:end,i) = [r;zeros(m-i,1)];
     W(i:end,i) = w;
     R(i:end,i+1:end) = R(i:end,i+1:end) - 2*w*(w'*R(i:end,i+1:end));
-    %{
-    x = R(i:end,i);
-    R(i:end,i) = [r;zeros(m-i-1,1)];
-    W(i:end,i) = R(i:end,i) - x;
-    W(i:end,i) = W(i:end,i)/norm(W(i:end,i));
-    R(i:end,i+1:end) = R(i:end,i+1:end) - 2*W(i:end,i)*(W(i:end,i)'*R(i:end,i+1:end));
-    %}
 end

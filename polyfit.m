@@ -6,18 +6,12 @@ x = linspace(0.1, 1, m)';
 Vfull = vander(x);
 Vfull = fliplr(Vfull);
 
-n = 12;%7;%24;
+n = 24;%12;%7;
 y = sin(1./x); 
 
 %TODO: calculate V
+
 V = Vfull(:,1:n);
-%{
-V = zeros(m,n);
-V(:,1) = ones(m,1);
-for i = 1:n-1
-    V(:,i+1) = x.^i;
-end
-%}
 
 %TODO: solution with classical GS
 [Q,R] = gs(V);
@@ -31,7 +25,7 @@ aMGS = backsub(R,Q'*y);
 [W,R] = hhqr(V);
 Y = applyQHe(W,y);
 aHH = backsub(R(1:n,:),Y);
-aHH = real(aHH);
+aHH = real(aHH(1:n));
 
 figure 
 hold all
